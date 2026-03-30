@@ -1,7 +1,7 @@
 package com.jujutsu.jujutsucraftaddon.mixins;
 
 import com.jujutsu.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.mcreator.jujutsucraft.entity.FlameArrowEntity;
 import net.mcreator.jujutsucraft.entity.JogoEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
@@ -45,7 +45,7 @@ public abstract class OpenProcedureMixin {
      * @reason Changes Black Flash Entity Particles
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
-    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+    private static void execute(LevelAccessor world, Entity entity, CallbackInfo ci) {
         ci.cancel();
 
         if (entity != null) {
@@ -217,7 +217,7 @@ public abstract class OpenProcedureMixin {
                     if (entity instanceof LivingEntity _livEnt3 && !_livEnt3.hasEffect(JujutsucraftaddonModMobEffects.FUGA.get())) {
                         entity.getPersistentData().putBoolean("PRESS_Z", false);
                     }
-                    if (GetDistanceNearestEnemyProcedure.execute(world, x, y, z, entity) > 8.0) {
+                    if (GetDistanceNearestEnemyProcedure.execute(world, entity) > 8.0) {
                         label274:
                         {
                             if (entity instanceof Mob) {
@@ -319,7 +319,7 @@ public abstract class OpenProcedureMixin {
                         var10000 = null;
                     }
 
-                    if (var10000 instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity && entity.getPersistentData().getDouble("cnt6") < 5.0) {
+                    if (var10000 instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity && entity.getPersistentData().getDouble("cnt6") < 5.0) {
                         entity.getPersistentData().putBoolean("PRESS_Z", true);
                     }
                     if (entity.getPersistentData().getDouble("cnt6") >= 5.0) {
@@ -338,7 +338,8 @@ public abstract class OpenProcedureMixin {
                                 entity.getPersistentData().putDouble("cnt6", 30.0);
                             }
                             {
-                                final Vec3 _center = new Vec3(x, y, z);
+                               // final Vec3 _center = new Vec3(x, y, z);
+                                final Vec3 _center = new Vec3(entity.getX(), entity.getY() + entity.getBbHeight() / 2.0, entity.getZ());
                                 List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(20 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
                                 for (Entity entityiterator : _entfound) {
                                     if ((entityiterator.getPersistentData().getString("OWNER_UUID")).equals(entity.getStringUUID())) {

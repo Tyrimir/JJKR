@@ -82,4 +82,31 @@ public class JujutsucraftaddonModGameRules {
     public static final GameRules.Key<GameRules.BooleanValue> JJKU_FINGER_RESET = GameRules.register("jjkuFingerReset", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
     public static final GameRules.Key<GameRules.BooleanValue> JJKU_DISABLE_BINDING_VOWS = GameRules.register("jjkuBindingVows", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
     public static final GameRules.Key<GameRules.BooleanValue> JJKU_EXTRACTOR_ALLOW = GameRules.register("jjkuExtractorAllow", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+
+
+
+
+    //public static final GameRules.Key<GameRules.BooleanValue> KENJAKU_ABSORB_MAHORAGA = GameRules.register("kenjakuCanAbsorbMahoraga", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+
+
+
+
+    //public static final GameRules.Key<GameRules.BooleanValue> GETO_ABSORB_WHEN_DIE = GameRules.register("getoAbsorbSpiritsWhenDie", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+
+
+
+    //public static final GameRules.Key<GameRules.BooleanValue> KENJAKU_INST_SWAP;
+
+
+
+    //public static final GameRules.Key<GameRules.BooleanValue> GETO_KEEP_SPIRITS = GameRules.register("getoKeepSpirits", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+
+
+
+
+
+
+
+
+
 }

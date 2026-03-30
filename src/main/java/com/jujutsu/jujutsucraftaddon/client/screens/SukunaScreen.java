@@ -67,10 +67,10 @@ public class SukunaScreen extends Screen {
     private List<AltarOption> getOptions() {
         List<AltarOption> options = new ArrayList<>();
         options.add(new AltarOption("Strong Attack"));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.dismantle").getString()));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.open").getString()));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.cleave").getString()));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.cleave").getString() + ": SpiderWeb"));
+        options.add(new AltarOption(Component.translatable("Dismantle").getString()));
+        options.add(new AltarOption(Component.translatable("Open").getString()));
+        options.add(new AltarOption(Component.translatable("Cleave").getString()));
+        options.add(new AltarOption(Component.translatable("Cleave Web").getString()));
         return options;
     }
 

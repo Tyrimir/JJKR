@@ -31,7 +31,7 @@ public class MegumiHitProcedure {
             }.getValue() != -2) {
                 if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:mahoraga_wheel_helmet")) {
                     if (world instanceof ServerLevel _serverLevel) {
-                        Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWROD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing((sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ())),
+                        Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWORD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing((sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ())),
                                 MobSpawnType.MOB_SUMMONED);
                         if (entitytospawn != null) {
                             entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);

@@ -336,7 +336,7 @@ public class SummonAllShadowsProcedure {
                             .setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).getBaseValue() * 2.5));
                 }
                 if (world instanceof ServerLevel _serverLevel) {
-                    Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWROD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+                    Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWORD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                     if (entitytospawn != null) {
                         entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
                     }

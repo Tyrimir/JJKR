@@ -40,12 +40,12 @@ public class CTSet1Procedure {
                     });
                 }
             }
-            if (entity instanceof Player _player && !_player.level().isClientSide())
-                _player.displayClientMessage(Component.literal("Changed Technique"), false);
-            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.FATIGUE.get(),
-                        (entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt1.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getDuration() : 0) + 1200,
-                        (entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt1.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getAmplifier() : 0) + 1, false, false));
+            //if (entity instanceof Player _player && !_player.level().isClientSide())
+                //_player.displayClientMessage(Component.literal("Changed Technique"), false);
+            //if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                //_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.FATIGUE.get(),
+                        //(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt1.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getDuration() : 0) + 1200,
+                        //(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt1.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getAmplifier() : 0) + 1, false, false));
             if (entity instanceof Player _player)
                 _player.closeContainer();
 

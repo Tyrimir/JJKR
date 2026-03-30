@@ -597,6 +597,41 @@ public abstract class StartCursedTechniqueProcedureMixin {
                                             Tick += 20.0 * Math.max(1.7 - var10003, 0.0);
                                         }
                                     }
+
+
+
+                                    //Honored and Fallen start 1
+                                    if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Honored One") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Fallen One")) {
+                                        if (entity instanceof LivingEntity) {
+                                            _entity = (LivingEntity) entity;
+                                            if (!_entity.level().isClientSide()) {
+                                                if (entity instanceof LivingEntity && !world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
+                                                    _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), (int) Math.round(Tick), 1, false, false));
+                                                }
+                                            }
+
+                                            return;
+                                        }
+                                    } else {
+                                        if (entity instanceof LivingEntity) {
+                                            _entity = (LivingEntity) entity;
+                                            if (!_entity.level().isClientSide()) {
+                                                if (entity instanceof LivingEntity && !world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
+                                                    _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), (int) Math.round(Tick / 4), 1, false, false));
+                                                }
+                                            }
+
+                                            return;
+                                        }
+                                    }
+                                    //Honored and Fallen end 1
+
+
+
+
+
+
+
                                     if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
                                         if (entity instanceof LivingEntity) {
                                             _entity = (LivingEntity) entity;
@@ -621,6 +656,27 @@ public abstract class StartCursedTechniqueProcedureMixin {
                                         }
                                     }
                                 } else if (entity instanceof LivingEntity) {
+
+
+                                    //Honored and Fallen start 2
+                                    if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Honored One") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Fallen One")) {
+                                        _entity = (LivingEntity) entity;
+                                        if (!_entity.level().isClientSide()) {
+                                            if (entity instanceof LivingEntity && !world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
+                                                _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), (int) Math.round(Tick / 4), 0, false, false));
+                                            }
+                                        }
+
+                                        return;
+                                    }
+                                    //Honored and Fallen end 2
+
+
+
+
+
+
+
                                     if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
                                         _entity = (LivingEntity) entity;
                                         if (!_entity.level().isClientSide()) {
@@ -644,12 +700,45 @@ public abstract class StartCursedTechniqueProcedureMixin {
 
                                 return;
                             } else {
+
+
+
+                                //Honored and Fallen Cooldown Start 3
+                                if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Honored One") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait).equals("The Fallen One")) {
+                                    if (entity instanceof LivingEntity) {
+                                        _entity = (LivingEntity) entity;
+                                        if (!_entity.level().isClientSide()) {
+
+                                            if (entity instanceof LivingEntity && !world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
+                                                _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) Math.round(Tick / 4), 0, false, false));
+
+                                            }
+                                            if (!entity.getPersistentData().getBoolean("PRESS_Z")) {
+                                                if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BurnOutRCT) {
+                                                    BurnoutKeyOnKeyPressedProcedure.execute(entity);
+                                                }
+                                            }
+                                        }
+
+                                        return;
+                                    }
+
+                                }
+                                //Honored and Fallen End 3
+
+
+
+
+
+
                                 if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
                                     if (entity instanceof LivingEntity) {
                                         _entity = (LivingEntity) entity;
                                         if (!_entity.level().isClientSide()) {
+
                                             if (entity instanceof LivingEntity && !world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
                                                 _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) Math.round(Tick / 2), 0, false, false));
+
                                             }
                                             if (!entity.getPersistentData().getBoolean("PRESS_Z")) {
                                                 if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BurnOutRCT) {

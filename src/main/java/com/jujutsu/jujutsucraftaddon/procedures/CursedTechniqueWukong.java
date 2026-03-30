@@ -17,7 +17,7 @@ public class CursedTechniqueWukong {
             double skill = 0.0;
             skill = (double)Math.round(entity.getPersistentData().getDouble("skill") - 10000.0);
             if (skill == 3.0) {
-                GaragaraProcedure.execute(world, x, y, z, entity);
+                GaragaraProcedure.execute(world, entity);
             } else if (skill == 4.0) {
                 FistGunProcedure.execute(world, entity);
             } else if (skill == 5.0) {

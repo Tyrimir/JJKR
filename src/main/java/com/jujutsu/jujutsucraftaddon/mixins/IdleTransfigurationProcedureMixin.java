@@ -106,7 +106,7 @@ public abstract class IdleTransfigurationProcedureMixin {
             z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * distance;
             if (entity.getPersistentData().getDouble("cnt1") > 5.0) {
                 entity.getPersistentData().putDouble("cnt2", entity.getPersistentData().getDouble("cnt2") + 1.0);
-                entity.getPersistentData().putDouble("Damage", 24.0 + entity.getPersistentData().getDouble("cnt2") * 0.1 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_IDLE_TRANSFIGURATION_LEVEL)));
+                entity.getPersistentData().putDouble("Damage", 17.0 + entity.getPersistentData().getDouble("cnt2") * 0.1 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_IDLE_TRANSFIGURATION_LEVEL)));
                 entity.getPersistentData().putDouble("Range", distance * 2.0 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_IDLE_TRANSFIGURATION_LEVEL)));
                 entity.getPersistentData().putDouble("effect", 2.0);
                 entity.getPersistentData().putDouble("knockback", 0.1);

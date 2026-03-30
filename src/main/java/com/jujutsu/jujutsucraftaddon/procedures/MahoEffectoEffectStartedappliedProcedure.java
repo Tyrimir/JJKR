@@ -1,6 +1,6 @@
 package com.jujutsu.jujutsucraftaddon.procedures;
 
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +17,6 @@ public class MahoEffectoEffectStartedappliedProcedure {
                         _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "execute as @e[distance=..30] run effect clear @e[distance=..30] jujutsucraft:domain_expansion");
             }
         }
-        ((EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) entity).setAnimation("sword_overhead");
+        ((EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity) entity).setAnimation("sword_overhead");
     }
 }

@@ -5,8 +5,11 @@ import com.jujutsu.jujutsucraftaddon.entity.IgrisEntity;
 import com.jujutsu.jujutsucraftaddon.entity.Shadow1Entity;
 import com.jujutsu.jujutsucraftaddon.init.*;
 import com.jujutsu.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import com.jujutsu.jujutsucraftaddon.potion.DamageMobEffect;
+import net.mcreator.jujutsucraft.command.JujutsucraftCursePowerCommand;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -23,6 +26,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -34,6 +38,10 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.entity.LivingEntity;
+import software.bernie.geckolib.animatable.GeoEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -130,18 +138,105 @@ public class CursedEnchantsAttackProcedure {
                 }
             }
 
+            //Buffs Gojo ct+clan combo curse power
+            if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo")) {
+                if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 2) {
 
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower / 1.35);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePower = _setval;
+                        capability.syncPlayerVariables(entity);
+                        ((LivingHurtEvent) event).setAmount(((float) (amount * 1.35)));
+                    });
+                }
+            }
+
+            //Buffs Sukuna ct+clan combo curse power
+            if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
+                if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 1) {
+
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower / 1.2);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePower = _setval;
+                        capability.syncPlayerVariables(entity);
+                        ((LivingHurtEvent) event).setAmount(((float) (amount * 1.2)));
+                    });
+                }
+            }
+
+            //Buffs Kashimo & Hakari ct Stats
             if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 7 || (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 29) {
                 ((LivingHurtEvent) event).setAmount(((float) (amount * 1.2)));
             }
+            //Buffs Nanami & Todo ct stats
+            if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 13 || (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 20) {
+                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.2)));
+            }
 
+            /**
+            //Buffs Gojo ct stats
+            if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 2) {
+                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.5)));
+            }
+            //Buffs Sukuna ct stats
+            if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 1) {
+                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.2)));
+            }
+             **/
+
+            //Buffs Toji & Yuta Stats
+            if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == -1 || (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 5) {
+                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.3)));
+            }
+            //Buffs Fallen One trait stats
             if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait.equals("The Fallen One")) {
+                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.2)));
+            }
+            //buffs Honored One trait stats
+           /** if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait.equals("The Honored One")) {
                 ((LivingHurtEvent) event).setAmount(((float) (amount * 1.35)));
-            }
 
-            if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait.equals("The Honored One")) {
-                ((LivingHurtEvent) event).setAmount(((float) (amount * 1.25)));
-            }
+
+
+
+
+
+
+                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) {
+                    MobEffectInstance currentEffect = _entity.getEffect(MobEffects.DAMAGE_BOOST);
+                    int newAmplifier = (currentEffect != null ? currentEffect.getAmplifier() : 0) + 30;
+                    _entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, newAmplifier, false, false));
+                }
+
+
+
+
+
+
+
+
+
+            } **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).contains("rabbit")) {
                 RabbitDarkness2Procedure.execute(entity);
@@ -417,6 +512,7 @@ public class CursedEnchantsAttackProcedure {
                         }
                     }
                 }
+
                 if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Rejected Zenin")) {
                     if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == -1) {
                         ((LivingHurtEvent) event).setAmount(((float) (amount * 1.3)));
@@ -430,6 +526,7 @@ public class CursedEnchantsAttackProcedure {
                         }
                     }
                 }
+
                 if (!(sourceentity instanceof LivingEntity && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()))) {
                     if (sourceentity instanceof LivingEntity && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                         if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 1) {

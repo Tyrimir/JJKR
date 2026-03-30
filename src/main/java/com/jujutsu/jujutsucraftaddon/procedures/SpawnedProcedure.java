@@ -55,7 +55,7 @@ public class SpawnedProcedure {
             }
         }
 
-        if ((entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:ten_shadows_technique")))) && !(entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity)) {
+        if ((entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:ten_shadows_technique")))) && !(entity instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity)) {
             if (!(((new Object() {
                 public Entity get(LevelAccessor _world, String _uuid) {
                     try {
@@ -225,7 +225,7 @@ public class SpawnedProcedure {
     private static void handleMahoragaLogic(LevelAccessor world, double x, double y, double z, Entity entity) {
         KenjakuDomainSummoningProcedure.execute(world, x, y, z, entity);
         if (entity.getPersistentData().getDouble("Mahoraga") == 1
-                && entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity
+                && entity instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity
                 && entity instanceof LivingEntity livingEntity
                 && !livingEntity.level().isClientSide()) {
             livingEntity.addEffect(new MobEffectInstance(

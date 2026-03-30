@@ -152,11 +152,11 @@ public class NahProcedure {
 
                                 CTNamesCTProcedure.execute(world, entity);
                             }
-                            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.FATIGUE.get(),
-                                        (entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt2.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getDuration() : 0) + 1200,
-                                        (entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt2.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getAmplifier() : 0) + 1, false,
-                                        false));
+                            //if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                               // _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.FATIGUE.get(),
+                                        //(entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt2.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getDuration() : 0) + 1200,
+                                        //(entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()) ? _livEnt2.getEffect(JujutsucraftaddonModMobEffects.FATIGUE.get()).getAmplifier() : 0) + 1, false,
+                                        //false));
 
                         } else {
                             if (entity instanceof Player _player && !_player.level().isClientSide())

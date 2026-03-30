@@ -25,10 +25,12 @@ import software.bernie.geckolib.animatable.GeoEntity;
 @Mixin(value = StartGuardProcedure.class, priority = -10000)
 public abstract class GuardEffectStartedappliedProcedureMixin {
 
+
+
     /**
      * @author Satushi
      * @reason Changes the guard + remove the sukuna slash guard when the effect start for balance reasons
-     */
+
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, Entity entity, CallbackInfo ci) {
         ci.cancel();
@@ -151,4 +153,5 @@ public abstract class GuardEffectStartedappliedProcedureMixin {
         }
 
     }
+    */
 }

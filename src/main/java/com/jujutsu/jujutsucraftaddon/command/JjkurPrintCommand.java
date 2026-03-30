@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 public class JjkurPrintCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurprint").requires(s -> s.hasPermission(2)).executes(arguments -> {
+        event.getDispatcher().register(Commands.literal("jjkuprint").requires(s -> s.hasPermission(2)).executes(arguments -> {
             Level world = arguments.getSource().getUnsidedLevel();
             double x = arguments.getSource().getPosition().x();
             double y = arguments.getSource().getPosition().y();

@@ -67,9 +67,9 @@ public class GojoScreen extends Screen {
     private List<AltarOption> getOptions() {
         List<AltarOption> options = new ArrayList<>();
         options.add(new AltarOption("Strong Attack"));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.red").getString()));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.purple").getString()));
-        options.add(new AltarOption(Component.translatable("jujutsu.technique.blue").getString()));
+        options.add(new AltarOption(Component.translatable("Red").getString()));
+        options.add(new AltarOption(Component.translatable("Purple").getString()));
+        options.add(new AltarOption(Component.translatable("Blue").getString()));
         return options;
     }
 

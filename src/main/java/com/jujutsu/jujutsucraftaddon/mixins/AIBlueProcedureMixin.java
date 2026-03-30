@@ -2,7 +2,7 @@ package com.jujutsu.jujutsucraftaddon.mixins;
 
 import com.jujutsu.jujutsucraftaddon.procedures.SetCustomizedProcedure;
 import net.mcreator.jujutsucraft.entity.BlackHoleEntity;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModAttributes;
 import net.mcreator.jujutsucraft.init.JujutsucraftModGameRules;
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
@@ -259,7 +259,7 @@ public abstract class AIBlueProcedureMixin {
                                         if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique != 16.0 && entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 != 16.0) {
                                             continue;
                                         }
-                                    } else if (!(entityiterator instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity)) {
+                                    } else if (!(entityiterator instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity)) {
                                         continue;
                                     }
 

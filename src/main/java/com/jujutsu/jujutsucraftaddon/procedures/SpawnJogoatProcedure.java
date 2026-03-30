@@ -312,7 +312,7 @@ public class SpawnJogoatProcedure {
                     _player.closeContainer();
             } else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SH == 2) {
                 if (world instanceof ServerLevel _serverLevel) {
-                    Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWROD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+                    Entity entitytospawn = JujutsucraftModEntities.EIGHT_HANDLED_SWORD_DIVERGENT_SILA_DIVINE_GENERAL_MAHORAGA.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                     if (entitytospawn != null) {
                         entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
                         if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())

@@ -53,7 +53,7 @@ public interface TechniqueGuiAccessorMixin {
     )
     HashMap<String, String> textstate();
 
-
+/**
     @Accessor(
             value = "cursed_spirit",
             remap = false
@@ -61,5 +61,5 @@ public interface TechniqueGuiAccessorMixin {
     static Checkbox getCursedSpirit() {
         throw new UnsupportedOperationException();
     }
-
+**/
 }

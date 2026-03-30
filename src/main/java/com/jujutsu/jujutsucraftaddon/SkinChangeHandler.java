@@ -1,3 +1,4 @@
+
 package com.jujutsu.jujutsucraftaddon;
 
 import com.jujutsu.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
@@ -8,8 +9,6 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.HumanoidArm;
@@ -19,6 +18,8 @@ import net.minecraftforge.client.event.RenderArmEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Locale;
 
 @Mod.EventBusSubscriber(modid = "jujutsucraftaddon", value = Dist.CLIENT)
 public class SkinChangeHandler {
@@ -36,7 +37,42 @@ public class SkinChangeHandler {
     }
 
     private static ResourceLocation safeTexture(String tex) {
-        return tex != null && !tex.isEmpty() ? new ResourceLocation(tex) : null;
+        if (tex == null) return null;
+        String s = tex.trim();
+        if (s.isEmpty()) return null;
+
+        // Strip surrounding quotes if present
+        if ((s.startsWith("\"") && s.endsWith("\"")) || (s.startsWith("'") && s.endsWith("'"))) {
+            s = s.substring(1, s.length() - 1).trim();
+            if (s.isEmpty()) return null;
+        }
+
+        // treat explicit "none" as absent
+        if ("none".equalsIgnoreCase(s)) return null;
+
+        // Normalize backslashes and whitespace
+        s = s.replace('\\', '/').trim();
+
+        // Lowercase to meet ResourceLocation requirements
+        s = s.toLowerCase(Locale.ROOT);
+
+        // If no namespace provided, default to minecraft
+        if (!s.contains(":")) {
+            s = "minecraft:" + s;
+        }
+
+        // Validate pattern: namespace:path both must contain only allowed characters
+        // allowed chars: a-z0-9 _ . - /
+        if (!s.matches("^[a-z0-9._\\-/]+:[a-z0-9._\\-/]+$")) {
+            return null;
+        }
+
+        try {
+            return new ResourceLocation(s);
+        } catch (Exception e) {
+            // Any parsing exception -> treat as invalid
+            return null;
+        }
     }
 
     @SubscribeEvent
@@ -67,7 +103,7 @@ public class SkinChangeHandler {
 
         player.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(vars -> {
             ResourceLocation texture = getCustomTexture(player, vars);
-            if (texture == null) return;
+            if (texture == null) return; // skip rendering if no valid texture
 
             Minecraft mc = Minecraft.getInstance();
             PlayerModel<AbstractClientPlayer> model = new PlayerModel<>(mc.getEntityModels().bakeLayer(ModelLayers.PLAYER), false);
@@ -82,13 +118,18 @@ public class SkinChangeHandler {
             int packedLight = event.getPackedLight();
             HumanoidArm arm = event.getArm();
 
-            if (arm == HumanoidArm.LEFT) {
-                model.leftArm.render(poseStack, buffer.getBuffer(RenderType.entityTranslucentCull(texture)), packedLight, 0xF000F0);
-            } else {
-                model.rightArm.render(poseStack, buffer.getBuffer(RenderType.entityTranslucentCull(texture)), packedLight, 0xF000F0);
+            // isolate transforms so we don't inherit an unexpected matrix (prevents upside-down)
+            poseStack.pushPose();
+            try {
+                if (arm == HumanoidArm.LEFT) {
+                    model.leftArm.render(poseStack, buffer.getBuffer(RenderType.entityTranslucentCull(texture)), packedLight, 0xF000F0);
+                } else {
+                    model.rightArm.render(poseStack, buffer.getBuffer(RenderType.entityTranslucentCull(texture)), packedLight, 0xF000F0);
+                }
+                event.setCanceled(true); // cancel default only when we actually rendered
+            } finally {
+                poseStack.popPose();
             }
-
-            event.setCanceled(true); // Only cancel default if we rendered a valid arm.
         });
     }
 }

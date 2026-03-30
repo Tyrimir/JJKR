@@ -6,7 +6,7 @@ import com.jujutsu.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import com.jujutsu.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import com.jujutsu.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import com.jujutsu.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
@@ -360,7 +360,7 @@ public class AttackPlayerProcedure {
 
                 if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 16.0 || ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 16.0 || ((JujutsucraftaddonModVariables.PlayerVariables) entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1.0) {
                     mahoraga = true;
-                } else if ((entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) || (entity instanceof IgrisEntity) || (entity instanceof Shadow1Entity)) {
+                } else if ((entity instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity) || (entity instanceof IgrisEntity) || (entity instanceof Shadow1Entity)) {
                     mahoraga = true;
                 }
 

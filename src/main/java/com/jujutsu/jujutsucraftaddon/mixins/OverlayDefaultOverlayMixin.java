@@ -78,7 +78,7 @@ public class OverlayDefaultOverlayMixin {
             }
 
             if (OverlayCooldown2Procedure.execute(entity)) {
-                event.getGuiGraphics().blit(new ResourceLocation("jujutsucraft:textures/screens/cooldown.png"), w / 2 + -211, h / 2 + 86, 0.0F, 0.0F, 24, 24, 24, 24);
+                event.getGuiGraphics().blit(new ResourceLocation("jujutsucraft:textures/screens/icon_cooldown.png"), w / 2 + -211, h / 2 + 86, 0.0F, 0.0F, 24, 24, 24, 24);
             }
 
             event.getGuiGraphics().drawString(Minecraft.getInstance().font, OCursePowerProcedure.execute(entity), w / 2 + -180, h / 2 + 86, -205, false);

@@ -78,7 +78,7 @@ public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen
             at = @At("TAIL")
     )
     public void renderTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-        Checkbox cursedSpirit = TechniqueGuiAccessorMixin.getCursedSpirit();
+        //Checkbox cursedSpirit = TechniqueGuiAccessorMixin.getCursedSpirit();
         if (this.second_technique != null && this.second_technique.isMouseOver(mouseX, mouseY)) {
             guiGraphics.renderTooltip(this.font, Component.literal("Usage: Click On The Button, Stores The Technique You Using, For Enable use /jjkuSecondTechnique @s true, For Storing Another You Need disable first"), mouseX, mouseY);
         }
@@ -86,8 +86,8 @@ public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen
             guiGraphics.renderTooltip(this.font, Component.literal("The Victorious Fighting Buddha, (斗战胜佛)"), mouseX, mouseY);
         }
 
-        if (cursedSpirit != null && cursedSpirit.isMouseOver(mouseX, mouseY)) {
-            guiGraphics.renderTooltip(font, Component.literal("CursedSpirits: Passive Regeneration, Less Cooldowns And More Resistance"), mouseX, mouseY);
-        }
+        //if (cursedSpirit != null && cursedSpirit.isMouseOver(mouseX, mouseY)) {
+        //    guiGraphics.renderTooltip(font, Component.literal("CursedSpirits: Passive Regeneration, Less Cooldowns And More Resistance"), mouseX, mouseY);
+        //}
     }
 }

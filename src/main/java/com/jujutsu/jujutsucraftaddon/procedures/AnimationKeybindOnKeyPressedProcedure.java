@@ -7,7 +7,7 @@ import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.mcreator.jujutsucraft.entity.MergedBeastAgitoEntity;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -129,8 +129,8 @@ public class AnimationKeybindOnKeyPressedProcedure {
                                 if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
                                     _entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, -1, 254, false, false));
                                 if (entityiterator instanceof GeoEntity) {
-                                    if (entityiterator instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) {
-                                        ((EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) entityiterator).setAnimation("guard");
+                                    if (entityiterator instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity) {
+                                        ((EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity) entityiterator).setAnimation("guard");
                                     }
                                     if (entityiterator instanceof MergedBeastAgitoEntity) {
                                         ((MergedBeastAgitoEntity) entityiterator).setAnimation("guard");

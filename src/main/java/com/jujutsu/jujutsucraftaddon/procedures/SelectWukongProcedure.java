@@ -16,7 +16,7 @@ public class SelectWukongProcedure {
                 capability.PlayerCurseTechnique = _setval;
                 capability.syncPlayerVariables(entity);
             });
-            SelectedProcedure.execute(world, x, y, z, entity, guistate);
+            SelectedProcedure.execute(world, x, y, z, entity);
         }
     }
 }

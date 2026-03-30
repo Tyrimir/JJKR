@@ -12,7 +12,42 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class JujutsucraftaddonModMobEffects {
+
+
+
+
+    //public static final DeferredRegister<MobEffect> HONORED_ONE = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, JujutsucraftaddonMod.MODID);
+
+    //public static final RegistryObject<MobEffect> HONORED_ONE = MOB_EFFECTS.register("Honored One", HonoredOneMobEffect::new);
+
+   // public static final DeferredRegister<MobEffect> HONORED_ONE = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, JujutsucraftaddonMod.MODID);
+
+
+    //public static final RegistryObject<MobEffect> HONORED_ONE =
+           // MOB_EFFECTS.register("honored_one", HonoredOneMobEffect::new);
+
+
+
+
     public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, JujutsucraftaddonMod.MODID);
+
+    // Register your HonoredOneMobEffect inside REGISTRY
+    public static final RegistryObject<MobEffect> HONORED_ONE = REGISTRY.register("honored_one", HonoredOneMobEffect::new);
+    public static final RegistryObject<MobEffect> FALLEN_ONE = REGISTRY.register("fallen_one", FallenOneMobEffect::new);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, JujutsucraftaddonMod.MODID);
     public static final RegistryObject<MobEffect> FUTURE_SIGHT_EFFECT = REGISTRY.register("future_sight_effect", () -> new FutureSightEffectMobEffect());
     public static final RegistryObject<MobEffect> AWAKENING = REGISTRY.register("awakening", () -> new AwakeningMobEffect());
     public static final RegistryObject<MobEffect> MURASAKI_EFFECT = REGISTRY.register("murasaki_effect", () -> new MurasakiEffectMobEffect());

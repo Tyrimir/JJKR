@@ -194,7 +194,7 @@ public abstract class HairpinProcedureMixin {
                     for (int index0 = 0; index0 < (int) (32.0 * range); ++index0) {
                         ++NUM1;
                         if (NUM1 > 0.0) {
-                            entity.getPersistentData().putDouble("Damage", 13.0 * CNT6 * 1.2);
+                            entity.getPersistentData().putDouble("Damage", 15.0 * CNT6 * 1.2);
                             entity.getPersistentData().putDouble("Range", 3.0 * CNT6 * 1.2);
                             entity.getPersistentData().putDouble("effect", 1.0);
                             entity.getPersistentData().putDouble("effectConfirm", 2.0);

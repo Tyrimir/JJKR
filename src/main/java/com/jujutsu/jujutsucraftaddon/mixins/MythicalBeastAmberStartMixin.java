@@ -29,10 +29,10 @@ public abstract class MythicalBeastAmberStartMixin {
 
         switch (variables.Subrace) {
             case "Perfect Vessel":
-                return variables.Clans.equals("Kashimo") ? constant * 1.15 : constant * 1.20;
+                return variables.Clans.equals("Kashimo") ? constant * 1.15 : constant * 1.25;
 
             default:
-                return variables.Clans.equals("Kashimo") ? constant * 1.1 : constant;
+                return variables.Clans.equals("Kashimo") ? constant * 1.15 : constant;
         }
     }
 }

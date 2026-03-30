@@ -17,7 +17,17 @@ minecraft {
 
     copyIdeResources = true
 
+
     runs {
+
+
+
+
+
+
+
+
+
         client {
             jvmArgs += [
                     "-Xms8G", "-Xmx8G", "-XX:+UseG1GC", "-XX:+ParallelRefProcEnabled", "-XX:MaxGCPauseMillis=200",
@@ -26,7 +36,13 @@ minecraft {
                     "-XX:G1ReservePercent=15", "-XX:G1HeapWastePercent=5", "-XX:G1MixedGCCountTarget=4",
                     "-XX:InitiatingHeapOccupancyPercent=15", "-XX:G1MixedGCLiveThresholdPercent=90",
                     "-XX:G1RSetUpdatingPauseTimePercent=5", "-XX:SurvivorRatio=32", "-XX:+PerfDisableSharedMem",
-                    "-XX:MaxTenuringThreshold=1", "-Dusing.aikars.flags=https://mcflags.emc.gs/", "-Daikars.new.flags=true"
+                    "-XX:MaxTenuringThreshold=1", "-Dusing.aikars.flags=https://mcflags.emc.gs/", "-Daikars.new.flags=true",
+                    // Required to allow Netty and related libraries to access JDK internals on modern JVMs
+                    "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED",
+                    "--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED",
+                    "--add-opens=java.base/java.lang=ALL-UNNAMED",
+                    "--add-opens=java.base/java.nio=ALL-UNNAMED",
+                    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
             ]
             workingDirectory project.file('run')
 
@@ -68,13 +84,15 @@ minecraft {
     }
 }
 
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    implementation fg.deobf("curse.maven:sorceryfight-471288:6242473")
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.9')
+    implementation fg.deobf("curse.maven:sorceryfight-471288:7766099")
+    implementation fg.deobf("curse.maven:geckolib-388172:7553267")
     implementation fg.deobf('dev.kosmx.player-anim:player-animation-lib-forge:1.0.2-rc1+1.20')
+    //implementation fg.deobf("curse.maven:utility-jujutsu-1011785:6681150")
 }
 
 mixin {
@@ -103,4 +121,5 @@ repositories {
     maven {
         url = 'https://maven.kosmx.dev/'
     }
+
 }

@@ -3,7 +3,7 @@ package com.jujutsu.jujutsucraftaddon.mixins;
 import com.jujutsu.jujutsucraftaddon.entity.IgrisEntity;
 import com.jujutsu.jujutsucraftaddon.entity.Shadow1Entity;
 import com.jujutsu.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
@@ -177,7 +177,7 @@ public abstract class CursedToolsHabilityMixin {
                     }
                 }
 
-                mahorage = entity instanceof Player ? entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 16.0 || (entity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity || entity instanceof IgrisEntity || entity instanceof Shadow1Entity;
+                mahorage = entity instanceof Player ? entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 16.0 || (entity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : entity instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity || entity instanceof IgrisEntity || entity instanceof Shadow1Entity;
                 NUM1 = 0.0;
                 STR1 = "";
                 if (NUM1 == 0.0 && entity_a instanceof LivingEntity) {

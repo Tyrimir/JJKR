@@ -35,12 +35,12 @@ public class BerserkEffectStartedappliedProcedure {
 
                     if (currentEffect != null) {
                         // Increment the current amplifier by 1
-                        newAmplifier = currentEffect.getAmplifier() + 21;
+                        newAmplifier = currentEffect.getAmplifier() + 30;
                     }
 
                     // Reapply the Strength effect with the new amplifier
                     _livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, newAmplifier, false, false));
-                    _livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 3600, 3, false, false));
+                    _livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 6600, 4, false, false));
                 }
             }
         }

@@ -80,7 +80,7 @@ public class MasteryScreen extends Screen {
         if (player == null) return options; // Ensure player exists before proceeding
 
         UUID playerUUID = player.getUUID(); // Get the player's UUID
-        options.add(new AltarOption("Extension Tech", 0, player));
+        options.add(new AltarOption("Extension", 0, player));
         options.add(new AltarOption("RCT Mode", 1, player));
         options.add(new AltarOption("RCT BurnOut", 2, player));
         options.add(new AltarOption("RCT Output", 3, player));

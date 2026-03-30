@@ -169,7 +169,7 @@ public abstract class DismantleProcedureMixin {
                 var10002 = new Vec3(var92, var93, ((Entity) var10006).getZ());
                 entity.lookAt(var10001, var10002);
                 entity.getPersistentData().putBoolean("PRESS_Z", false);
-                if (GetDistanceNearestEnemyProcedure.execute(world, x, y, z, entity) > (double) 6.0F) {
+                if (GetDistanceNearestEnemyProcedure.execute(world, entity) > (double) 6.0F) {
                     label408:
                     {
                         if (entity instanceof Mob) {
@@ -513,7 +513,7 @@ public abstract class DismantleProcedureMixin {
                             }
                         }
 
-                        entity.getPersistentData().putDouble("Damage", entity.getPersistentData().getDouble("Damage") * Math.max(var46, (double) 0.75F));
+                        entity.getPersistentData().putDouble("Damage", entity.getPersistentData().getDouble("Damage") * Math.max(var46, (double) 1.75F));
                         entity.getPersistentData().putDouble("Range", (double) 3.0F * var46);
                         entity.getPersistentData().putDouble("knockback", (double) 0.25F * Math.min(var46, (double) 1.0F));
                         if (entity.getPersistentData().getDouble("cnt7") == (double) 1.0F) {

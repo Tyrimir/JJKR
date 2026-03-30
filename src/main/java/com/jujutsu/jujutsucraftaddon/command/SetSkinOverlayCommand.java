@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 public class SetSkinOverlayCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("setSkinOverlay").requires(s -> s.hasPermission(4)).then(Commands.argument("overlayPath", StringArgumentType.word()).executes(arguments -> {
+        event.getDispatcher().register(Commands.literal("jjkusetSkinOverlay").requires(s -> s.hasPermission(4)).then(Commands.argument("overlayPath", StringArgumentType.word()).executes(arguments -> {
             Level world = arguments.getSource().getUnsidedLevel();
             double x = arguments.getSource().getPosition().x();
             double y = arguments.getSource().getPosition().y();

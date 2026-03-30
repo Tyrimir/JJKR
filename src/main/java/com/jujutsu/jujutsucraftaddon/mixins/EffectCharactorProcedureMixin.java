@@ -53,6 +53,12 @@ public abstract class EffectCharactorProcedureMixin {
      * @author Satushi
      * @reason Fixing/Changes
      */
+
+
+
+    /**
+
+
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, Entity entity, Entity entityiterator, CallbackInfo ci) {
         ci.cancel();
@@ -494,7 +500,7 @@ public abstract class EffectCharactorProcedureMixin {
                         if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 16.0 && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 16.0 && ((JujutsucraftaddonModVariables.PlayerVariables) entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga != 1.0) {
                             break label496;
                         }
-                    } else if  (!((entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) || (entity instanceof IgrisEntity) || (entity instanceof Shadow1Entity))) {
+                    } else if  (!((entity instanceof EightHandledSwordDivergentSilaDivineGeneralMahoragaEntity) || (entity instanceof IgrisEntity) || (entity instanceof Shadow1Entity))) {
                         break label496;
                     }
 
@@ -544,6 +550,6 @@ public abstract class EffectCharactorProcedureMixin {
                 }
             }
 
-        }
-    }
-}
+     }
+   }
+     **/ }
