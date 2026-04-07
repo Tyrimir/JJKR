@@ -25,7 +25,6 @@
     "CopiedCursedTechniqueMixin",
     "CursedTechniqueOnPotionActiveTick3ProcedureMixin",
     "CursedToolsHabilityMixin",
-    "DismantleProcedureMixin",
     "DomainExpansionBattleProcedureMixin",
     "DomainExpansionCreateBarrierProcedureMixin",
     "DomainExpansionEffectExpiresProcedureMixin",

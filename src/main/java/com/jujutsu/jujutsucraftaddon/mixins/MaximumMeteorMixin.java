@@ -50,9 +50,11 @@ public abstract class MaximumMeteorMixin {
      * @reason Testing
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
-    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+    private static void execute(LevelAccessor world, Entity entity, CallbackInfo ci) {
         ci.cancel();
-
+        double x = entity.getX();
+        double y = entity.getY();
+        double z = entity.getZ();
         if (entity != null) {
             ItemStack old_health = ItemStack.EMPTY;
             Entity entity_a = null;

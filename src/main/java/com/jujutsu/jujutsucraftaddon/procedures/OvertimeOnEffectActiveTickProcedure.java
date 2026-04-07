@@ -17,7 +17,7 @@ public class OvertimeOnEffectActiveTickProcedure {
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(JujutsucraftaddonModParticleTypes.CURSE_POWER_BLUE_DARK.get(), x, (y + 1), z, 2, 0, 0, 0, 0.5);
         } else if (world instanceof Level _lvl2 && _lvl2.isDay()) {
-            if (!(entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(MobEffects.WEAKNESS))) {
+            if (!(entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(MobEffects.DAMAGE_RESISTANCE))) {
                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     _entity.removeEffect(JujutsucraftaddonModMobEffects.OVERTIME.get());
             }

@@ -13,7 +13,7 @@ public class OvertimeEffectExpiresProcedure {
             return;
         if (world instanceof Level _lvl0 && _lvl0.isDay()) {
             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 8400, 1, false, false));
+                _entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 8400, 1, false, false));
         }
     }
 }

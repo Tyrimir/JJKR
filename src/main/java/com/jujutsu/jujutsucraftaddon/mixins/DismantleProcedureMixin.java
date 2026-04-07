@@ -44,7 +44,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-@Mixin(value = DismantleProcedure.class, priority = -10000)
+//@Mixin(value = DismantleProcedure.class, priority = -10000)
 public abstract class DismantleProcedureMixin {
     public DismantleProcedureMixin() {
     }
@@ -53,7 +53,7 @@ public abstract class DismantleProcedureMixin {
      * @author Sat
      * @reason This Changes Dismantle Range + Give dismantle more destructive power / Slashes more effective in the world
      */
-
+/**
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
@@ -1212,4 +1212,7 @@ public abstract class DismantleProcedureMixin {
 //
 //        }
 //    }
+
+
+    **/
 }
