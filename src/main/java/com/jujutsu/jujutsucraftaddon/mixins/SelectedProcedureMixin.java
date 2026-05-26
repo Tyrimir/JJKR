@@ -1,7 +1,7 @@
 package com.jujutsu.jujutsucraftaddon.mixins;
 
 import com.jujutsu.jujutsucraftaddon.procedures.CustomCursedTechniqueChangerRightclickedProcedureProcedure;
-import net.mcreator.jujutsucraft.network.SelectTechniqueButtonMessage;
+import net.mcreator.jujutsucraft.network.SelectTechnique2ButtonMessage;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.HashMap;
 
-@Mixin(value = SelectTechniqueButtonMessage.class, priority = -10000)
+@Mixin(value = SelectTechnique2ButtonMessage.class, priority = -10000)
 public abstract class SelectedProcedureMixin {
 
     /**

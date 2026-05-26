@@ -85,8 +85,8 @@
     "RunningAnimationMixin",
     "SatoruGojoSchoolModelMixin",
     "SelectedProcedureMixin",
-    "SelectTechniqueButtonMessageMixin",
-    "SelectTechniqueScreenMixin",
+    "SelectTechnique2ButtonMessageMixin",
+    "SelectTechnique2ScreenMixin",
     "SetTagCursedSpiritProcedureMixin",
     "SetTagSocererMixin",
     "SimpleDomainKeyMixin",
@@ -116,7 +116,8 @@
     "WhenPlayerRespawnMixin",
     "WhenRespawnedMixin",
     "WhenRespawnMixin",
-    "WhenRightClickToEntityMixin"
+    "WhenRightClickToEntityMixin",
+    "OgiZeninPassiveSkillProcedureMixin"
   ],
   "client": [
     "PlayerAttackMixin"

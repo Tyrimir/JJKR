@@ -1,6 +1,6 @@
 package com.jujutsu.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.client.gui.SelectTechniqueScreen;
+import net.mcreator.jujutsucraft.client.gui.SelectTechnique2Screen;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.HashMap;
 
-@Mixin(SelectTechniqueScreen.class)
+@Mixin(SelectTechnique2Screen.class)
 public interface TechniqueGuiAccessorMixin {
     @Accessor(
             value = "world",

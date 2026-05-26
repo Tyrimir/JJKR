@@ -1,12 +1,11 @@
 package com.jujutsu.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.JujutsucraftMod;
-import net.mcreator.jujutsucraft.client.gui.SelectTechniqueScreen;
-import net.mcreator.jujutsucraft.network.SelectTechniqueButtonMessage;
-import net.mcreator.jujutsucraft.world.inventory.SelectTechniqueMenu;
+import net.mcreator.jujutsucraft.client.gui.SelectTechnique2Screen;
+import net.mcreator.jujutsucraft.network.SelectTechnique2ButtonMessage;
+import net.mcreator.jujutsucraft.world.inventory.SelectTechnique2Menu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.HashMap;
 
-@Mixin(value = SelectTechniqueScreen.class, priority = -10000)
-public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen<SelectTechniqueMenu> {
+@Mixin(value = SelectTechnique2Screen.class, priority = -10000)
+public abstract class SelectTechnique2ScreenMixin extends AbstractContainerScreen<SelectTechnique2Menu> {
     @Unique
     Button second_technique;
     @Unique
@@ -35,7 +34,7 @@ public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen
      * @author Satushi
      */
 
-    public SelectTechniqueScreenMixin(SelectTechniqueMenu container, Inventory inventory, Component text) {
+    public SelectTechnique2ScreenMixin(SelectTechnique2Menu container, Inventory inventory, Component text) {
         super(container, inventory, text);
     }
 
@@ -54,14 +53,14 @@ public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen
         HashMap<String, Object> guistate = accessor.getGuistate();
         HashMap<String, String> textstate = accessor.textstate();
         this.second_technique = Button.builder(Component.literal("Second Technique"), (e) -> {
-            JujutsucraftMod.PACKET_HANDLER.sendToServer(new SelectTechniqueButtonMessage(1000, x, y, z, textstate));
-            SelectTechniqueButtonMessage.handleButtonAction(entity, 1000, x, y, z, textstate);
+            JujutsucraftMod.PACKET_HANDLER.sendToServer(new SelectTechnique2ButtonMessage(1000, x, y, z, textstate));
+            SelectTechnique2ButtonMessage.handleButtonAction(entity, 1000, x, y, z, textstate);
         }).bounds(this.leftPos + 11, this.topPos + 180, 75, 20).build();
         guistate.put("button:second_technique", this.second_technique);
         this.addRenderableWidget(this.second_technique);
         this.sun_wukong = Button.builder(Component.literal("Sun Wukong"), (e) -> {
-            JujutsucraftMod.PACKET_HANDLER.sendToServer(new SelectTechniqueButtonMessage(100, x, y, z, textstate));
-            SelectTechniqueButtonMessage.handleButtonAction(entity, 100, x, y, z, textstate);
+            JujutsucraftMod.PACKET_HANDLER.sendToServer(new SelectTechnique2ButtonMessage(100, x, y, z, textstate));
+            SelectTechnique2ButtonMessage.handleButtonAction(entity, 100, x, y, z, textstate);
         }).bounds(this.leftPos + 11, this.topPos + 155, 75, 20).build();
         guistate.put("button:sun_wukong", this.sun_wukong);
         this.addRenderableWidget(this.sun_wukong);

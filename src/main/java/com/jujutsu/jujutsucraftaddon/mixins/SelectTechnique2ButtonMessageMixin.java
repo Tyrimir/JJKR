@@ -3,8 +3,8 @@ package com.jujutsu.jujutsucraftaddon.mixins;
 import com.jujutsu.jujutsucraftaddon.procedures.CustomCursedTechniqueChangerRightclickedProcedureProcedure;
 import com.jujutsu.jujutsucraftaddon.procedures.SelectJinWooProcedure;
 import com.jujutsu.jujutsucraftaddon.procedures.SelectWukongProcedure;
-import net.mcreator.jujutsucraft.network.SelectTechniqueButtonMessage;
-import net.mcreator.jujutsucraft.world.inventory.SelectTechniqueMenu;
+import net.mcreator.jujutsucraft.network.SelectTechnique2ButtonMessage;
+import net.mcreator.jujutsucraft.world.inventory.SelectTechnique2Menu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,12 +16,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@Mixin(value = SelectTechniqueButtonMessage.class, priority = -10000)
-public class SelectTechniqueButtonMessageMixin {
+@Mixin(value = SelectTechnique2ButtonMessage.class, priority = -10000)
+public class SelectTechnique2ButtonMessageMixin {
     @Inject(at = @At("TAIL"), method = "handleButtonAction", remap = false)
     private static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate, CallbackInfo ci) {
         Level world = entity.level();
-        HashMap guistate = SelectTechniqueMenu.guistate;
+        HashMap guistate = SelectTechnique2Menu.guistate;
         Iterator var8 = textstate.entrySet().iterator();
 
         while (var8.hasNext()) {
