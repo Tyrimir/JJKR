@@ -54,6 +54,13 @@ public class CTChangerButtonMessage {
     }
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
+        if (entity == null || entity.level().isClientSide()
+                || !(entity.containerMenu instanceof CTChangerMenu menu)
+                || !menu.stillValid(entity)
+                || !entity.getInventory().contains(new net.minecraft.world.item.ItemStack(
+                        com.jujutsu.jujutsucraftaddon.init.JujutsucraftaddonModItems.RANDOM_CT_CHANGER.get()))) {
+            return;
+        }
         Level world = entity.level();
         HashMap guistate = CTChangerMenu.guistate;
         // security measure to prevent arbitrary chunk generation
@@ -61,7 +68,7 @@ public class CTChangerButtonMessage {
             return;
         if (buttonID == 0) {
 
-            TestProcedureeProcedure.execute(world, x, y, z, entity, guistate);
+            TestProcedureeProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, guistate);
         }
     }
 

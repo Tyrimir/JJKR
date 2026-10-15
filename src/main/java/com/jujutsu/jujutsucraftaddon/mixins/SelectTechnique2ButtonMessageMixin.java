@@ -1,46 +1,42 @@
 package com.jujutsu.jujutsucraftaddon.mixins;
 
 import com.jujutsu.jujutsucraftaddon.procedures.CustomCursedTechniqueChangerRightclickedProcedureProcedure;
-import com.jujutsu.jujutsucraftaddon.procedures.SelectJinWooProcedure;
 import com.jujutsu.jujutsucraftaddon.procedures.SelectWukongProcedure;
 import net.mcreator.jujutsucraft.network.SelectTechnique2ButtonMessage;
 import net.mcreator.jujutsucraft.world.inventory.SelectTechnique2Menu;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 @Mixin(value = SelectTechnique2ButtonMessage.class, priority = -10000)
 public class SelectTechnique2ButtonMessageMixin {
-    @Inject(at = @At("TAIL"), method = "handleButtonAction", remap = false)
+    @Inject(at = @At("HEAD"), method = "handleButtonAction", remap = false, cancellable = true)
     private static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate, CallbackInfo ci) {
-        Level world = entity.level();
-        HashMap guistate = SelectTechnique2Menu.guistate;
-        Iterator var8 = textstate.entrySet().iterator();
-
-        while (var8.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry) var8.next();
-            String key = (String) entry.getKey();
-            String value = (String) entry.getValue();
-            guistate.put(key, value);
+        if (buttonID != 100 && buttonID != 101 && buttonID != 1000) {
+            return;
         }
-
-        if (buttonID == 1000) {
-            CustomCursedTechniqueChangerRightclickedProcedureProcedure.execute(world, x, y, z, entity);
+        // Custom buttons execute once, on the server, using the player's active menu.
+        ci.cancel();
+        if (!(entity instanceof ServerPlayer player)
+                || !(player.containerMenu instanceof SelectTechnique2Menu menu)
+                || !menu.stillValid(player)) {
+            return;
         }
-
-        if (buttonID == 100) {
-            SelectWukongProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-        }
-
+        // Button 101 has no enabled UI and its unfinished procedure selects Wukong.
         if (buttonID == 101) {
-            SelectJinWooProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
+            return;
+        }
+        if (buttonID == 1000) {
+            CustomCursedTechniqueChangerRightclickedProcedureProcedure.execute(
+                    player.level(), player.getX(), player.getY(), player.getZ(), player);
+        } else {
+            SelectWukongProcedure.execute(player.level(), player.getX(), player.getY(), player.getZ(),
+                    player, new HashMap<>());
         }
     }
 }

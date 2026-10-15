@@ -27,11 +27,15 @@ public abstract class DomainExpansionEffectExpiresProcedureMixin {
 
     @Inject(
             method = "execute",
-            at = @At("HEAD"),
+            at = @At("TAIL"),
             remap = false
     )
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
 
+        // Let BreakDomain capture the active radius before DOMAIN_TIME resets it.
+        if (entity == null || world.isClientSide()) {
+            return;
+        }
         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) {
             if (!(entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()))) {
                 _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.DOMAIN_TIME.get(), 40, 1, false, false));

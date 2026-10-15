@@ -44,7 +44,7 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = WhenEntityTakesDamageProcedure.class, priority = -10000)
+@Mixin(value = WhenEntityAttacked2Procedure.class, priority = -10000)
 public abstract class WhenEntityAttackedProcedureMixin {
     public WhenEntityAttackedProcedureMixin() {
     }
@@ -57,6 +57,9 @@ public abstract class WhenEntityAttackedProcedureMixin {
     @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;D)V", remap = false, cancellable = true)
     private static void execute(Event event, LevelAccessor world, DamageSource damagesource, Entity entity, Entity immediatesourceentity, Entity sourceentity, double amount, CallbackInfo ci) {
         ci.cancel();
+        if (event != null && event.isCancelable() && event.isCanceled()) {
+            return;
+        }
 
         if (damagesource != null && entity != null && sourceentity != null) {
             String STR1 = "";
@@ -90,7 +93,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                     }
                 }
 
-                if (sourceentity instanceof FushiguroTojiEntity && amount >= 100 && ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == JujutsucraftModItems.PLAYFUL_CLOUD.get())) {
+                if (sourceentity instanceof FushiguroTojiEntity && amount >= 100 && ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == JujutsucraftModItems.PLAYFUL_CLOUD.get())) {
                     if (!((((FushiguroTojiEntity) sourceentity).animationprocedure).equals("playful" + Mth.nextInt(RandomSource.create(), 1, 4)))) {
                         ((FushiguroTojiEntity) sourceentity).setAnimation("playful" + Mth.nextInt(RandomSource.create(), 1, 4));
                     }
@@ -118,6 +121,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             } else if (event != null && event.hasResult()) {
                                 event.setResult(Event.Result.DENY);
                             }
+                            return;
                         }
                     }
                 } else if (entity instanceof TodoAoiEntity) {
@@ -128,6 +132,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         } else if (event != null && event.hasResult()) {
                             event.setResult(Event.Result.DENY);
                         }
+                        return;
                     }
                 }
 
@@ -141,6 +146,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         } else if (event != null && event.hasResult()) {
                             event.setResult(Event.Result.DENY);
                         }
+                        return;
                     }
                 }
 
@@ -182,6 +188,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             } else if (event != null && event.hasResult()) {
                                 event.setResult(Event.Result.DENY);
                             }
+                            return;
                         }
                     } else {
                         if (Math.random() < (1) / ((float) 120)) {
@@ -200,6 +207,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             } else if (event != null && event.hasResult()) {
                                 event.setResult(Event.Result.DENY);
                             }
+                            return;
                         }
                     }
                 }
@@ -215,6 +223,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                 } else if (event != null && event.hasResult()) {
                                     event.setResult(Event.Result.DENY);
                                 }
+                                return;
                             }
                         } else {
                             if (Math.random() < (1) / ((float) 80)) {
@@ -224,6 +233,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                 } else if (event != null && event.hasResult()) {
                                     event.setResult(Event.Result.DENY);
                                 }
+                                return;
                             }
                         }
                     }
@@ -238,13 +248,14 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             } else if (event != null && event.hasResult()) {
                                 event.setResult(Event.Result.DENY);
                             }
+                            return;
                         }
                     }
                 }
 
                 if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == JujutsucraftaddonModItems.WUKONG_SET_CHESTPLATE.get().asItem()) {
-                    if (Math.random() < (1) / ((float) 20)) {
-                        sourceentity.hurt(damagesource, (float) amount / 10);
+                    if (!entity.level().isClientSide() && sourceentity != entity && !damagesource.is(DamageTypes.THORNS) && !damagesource.is(TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("forge:combat"))) && Math.random() < (1) / ((float) 20)) {
+                        sourceentity.hurt(entity.damageSources().thorns(entity), (float) amount / 10);
                     }
                 }
 

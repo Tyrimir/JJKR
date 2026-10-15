@@ -55,7 +55,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);
@@ -97,7 +97,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);
@@ -139,7 +139,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);
@@ -181,7 +181,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);
@@ -223,7 +223,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);
@@ -265,7 +265,7 @@ public class BarrageBlueGojoProcedure {
                 (entitytospawn).getPersistentData().putBoolean("circle", true);
                 (entitytospawn).getPersistentData().putBoolean("Player", true);
                 (entitytospawn).getPersistentData().putBoolean("free", true);
-                (entitytospawn).getPersistentData().putBoolean("flag_start", true);
+                ((net.mcreator.jujutsucraft.entity.BlueEntity) entitytospawn).getEntityData().set(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start, true);
                 (entitytospawn).getPersistentData().putString("OWNER_UUID", (entity.getStringUUID()));
                 (entitytospawn).getPersistentData().putString("PlayerName", (entity.getStringUUID()));
                 ((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(10);

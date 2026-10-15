@@ -18,9 +18,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class HitenItemMixin {
 
 
-    @Inject(method = "swing*", at = @At("HEAD"))
+    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"))
     private void onSwing(CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
+        if (entity.level().isClientSide()) {
+            return;
+        }
         boolean sukuna = false;
         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans.equals("Sukuna") && ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 1)) {
            sukuna = true;

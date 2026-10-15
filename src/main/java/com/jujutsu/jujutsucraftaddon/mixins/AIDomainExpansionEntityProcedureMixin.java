@@ -146,6 +146,18 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
                 }
 
                 if (entity.getPersistentData().getDouble("cnt_break") >= (double) Math.round(range * 2.0 + 2.0) && !entity.level().isClientSide()) {
+                    // Revisit blocks that were rebuilt behind the expanding cleanup wave.
+                    BlockPos center = BlockPos.containing(Math.round(x), Math.round(y), Math.round(z));
+                    int cleanupRadius = (int) Math.ceil(range + 1.0);
+                    var barrierTag = BlockTags.create(new ResourceLocation("jujutsucraft:barrier"));
+                    for (BlockPos pos : BlockPos.betweenClosed(center.offset(-cleanupRadius, -cleanupRadius, -cleanupRadius),
+                            center.offset(cleanupRadius, cleanupRadius, cleanupRadius))) {
+                        if (pos.getY() >= entity.level().getMinBuildHeight() && pos.getY() < entity.level().getMaxBuildHeight()
+                                && pos.distSqr(center) < (range + 1.0) * (range + 1.0)
+                                && world.getBlockState(pos).is(barrierTag)) {
+                            JujutsuBarrierUpdateTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+                        }
+                    }
                     entity.discard();
                 }
             }

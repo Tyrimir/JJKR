@@ -236,6 +236,12 @@ public abstract class DomainExpansionBattleProcedureMixin {
                         Entity entityToSpawn = ((EntityType) JujutsucraftModEntities.DOMAIN_EXPANSION_ENTITY.get()).spawn(_level, BlockPos.containing(x_pos, y_pos, z_pos), MobSpawnType.MOB_SUMMONED);
                         if (entityToSpawn != null) {
                             entityToSpawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+                            // Cleanup must cover the same radius used to build this domain.
+                            var addonVars = entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                                    .orElse(new JujutsucraftaddonModVariables.PlayerVariables());
+                            double cleanupRadius = addonVars.BarrierlessDomain ? addonVars.RadiusDomain
+                                    : JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius;
+                            entityToSpawn.getPersistentData().putDouble("DomainExpansionSizer", Math.max(0.0, cleanupRadius) + 3.0);
                         }
                     }
                 }

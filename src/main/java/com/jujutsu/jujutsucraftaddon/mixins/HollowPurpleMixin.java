@@ -220,7 +220,7 @@ public abstract class HollowPurpleMixin {
                     entityiterator = (Entity) var45.next();
                     if (entityiterator instanceof RedEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                         SetRangedAmmoProcedure.execute(entity, entityiterator);
-                        entityiterator.getPersistentData().putBoolean("flag_purple", true);
+                        entityiterator.getEntityData().set(RedEntity.DATA_flag_purple, true);
                         break;
                     }
                 }
@@ -251,7 +251,7 @@ public abstract class HollowPurpleMixin {
                     entityiterator = (Entity) var45.next();
                     if (entityiterator instanceof BlueEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                         SetRangedAmmoProcedure.execute(entity, entityiterator);
-                        entityiterator.getPersistentData().putBoolean("flag_purple", true);
+                        entityiterator.getEntityData().set(BlueEntity.DATA_flag_purple, true);
                         break;
                     }
                 }
@@ -280,7 +280,7 @@ public abstract class HollowPurpleMixin {
 
                     while (var45.hasNext()) {
                         entityiterator = (Entity) var45.next();
-                        if (entity != entityiterator && entity.getPersistentData().getDouble("NameRanged") == entityiterator.getPersistentData().getDouble("NameRanged_ranged") && entityiterator.getPersistentData().getBoolean("flag_purple")) {
+                        if (entity != entityiterator && entity.getPersistentData().getDouble("NameRanged") == entityiterator.getPersistentData().getDouble("NameRanged_ranged") && ((entityiterator instanceof RedEntity red && red.getEntityData().get(RedEntity.DATA_flag_purple)) || (entityiterator instanceof BlueEntity blue && blue.getEntityData().get(BlueEntity.DATA_flag_purple)))) {
                             logic_a = true;
                             if (entityiterator instanceof RedEntity) {
                                 yaw = Math.toRadians((double) (entity.getYRot() + 90.0F) + Math.max(40.0 - entity.getPersistentData().getDouble("cnt1") * 4.0, 0.0));

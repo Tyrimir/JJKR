@@ -89,7 +89,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    implementation fg.deobf("curse.maven:sorceryfight-471288:7766099")
+    implementation fg.deobf("curse.maven:sorceryfight-471288:9146690")
     implementation fg.deobf("curse.maven:geckolib-388172:7553267")
     implementation fg.deobf('dev.kosmx.player-anim:player-animation-lib-forge:1.0.2-rc1+1.20')
     implementation fg.deobf("curse.maven:jjku-next-gen-1454330:7896700")

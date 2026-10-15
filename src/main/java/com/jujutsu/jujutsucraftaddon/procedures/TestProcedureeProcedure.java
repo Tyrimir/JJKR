@@ -25,56 +25,58 @@ public class TestProcedureeProcedure {
         }
     }
 
-    private static final List<CTRange> CTs = new ArrayList<>();
-    private static double totalSum = 0.0;
 
-    public static void calculateCTRanges() {
-        CTs.clear();
-        totalSum = 0.0;
+    private static List<CTRange> calculateCTRanges() {
+        List<CTRange> CTs = new ArrayList<>();
 
-        addCTRange("SUKUNA", JogoatConfiguration.SUKUNA.get());
-        addCTRange("GOJO", JogoatConfiguration.GOJO.get());
-        addCTRange("OGI", JogoatConfiguration.OGI.get());
-        addCTRange("MAKI", JogoatConfiguration.MAKI.get());
-        addCTRange("DHRUV", JogoatConfiguration.DHRUV.get());
-        addCTRange("MAHORAGA", JogoatConfiguration.MAHORAGA.get());
-        addCTRange("TSUKUMO", JogoatConfiguration.TSUKUMO.get());
-        addCTRange("YAGA", JogoatConfiguration.YAGA.get());
-        addCTRange("KUROURUSHI", JogoatConfiguration.KUROURUSHI.get());
-        addCTRange("ISHIGORI", JogoatConfiguration.ISHIGORI.get());
-        addCTRange("NISHIMIYA", JogoatConfiguration.NISHIMIYA.get());
-        addCTRange("TODO", JogoatConfiguration.TODO.get());
-        addCTRange("DAGON", JogoatConfiguration.DAGON.get());
-        addCTRange("MIGUEL", JogoatConfiguration.MIGUEL.get());
-        addCTRange("OKKOTSU", JogoatConfiguration.OKKOTSU.get());
-        addCTRange("MEIMEI", JogoatConfiguration.MEIMEI.get());
-        addCTRange("YOROZU", JogoatConfiguration.YOROZU.get());
-        addCTRange("URAUME", JogoatConfiguration.URAUME.get());
-        addCTRange("GETO", JogoatConfiguration.GETO.get());
-        addCTRange("CHOSO", JogoatConfiguration.CHOSO.get());
-        addCTRange("TAKAKOURO", JogoatConfiguration.TAKAKOURO.get());
-        addCTRange("ITADORI", JogoatConfiguration.ITADORI.get());
-        addCTRange("KUSAKABE", JogoatConfiguration.KUSAKABE.get());
-        addCTRange("JUNPE", JogoatConfiguration.JUNPE.get());
-        addCTRange("JOGO", JogoatConfiguration.JOGO.get());
-        addCTRange("TAKABA", JogoatConfiguration.TAKABA.get());
-        addCTRange("HIGURUMA", JogoatConfiguration.HIGURUMA.get());
-        addCTRange("ANGEL", JogoatConfiguration.ANGEL.get());
-        addCTRange("HAKARI", JogoatConfiguration.HAKARI.get());
-        addCTRange("MAHITO", JogoatConfiguration.MAHITO.get());
-        addCTRange("CHOJURO", JogoatConfiguration.CHOJURO.get());
-        addCTRange("NANAMI", JogoatConfiguration.NANAMI.get());
-        addCTRange("FUSHIGURO", JogoatConfiguration.FUSHIGURO.get());
-        addCTRange("SMALLPOXDEITY", JogoatConfiguration.SMALLPOXDEITY.get());
-        addCTRange("INUMAKI", JogoatConfiguration.INUMAKI.get());
-        addCTRange("KUGISAKI", JogoatConfiguration.KUGISAKI.get());
-        addCTRange("HANAMI", JogoatConfiguration.HANAMI.get());
-        addCTRange("KASHIMO", JogoatConfiguration.KASHIMO.get());
-        addCTRange("JINICHI", JogoatConfiguration.JINICHI.get());
-        addCTRange("NAOYA", JogoatConfiguration.NAOYA.get());
+        addCTRange(CTs, "SUKUNA", JogoatConfiguration.SUKUNA.get());
+        addCTRange(CTs, "GOJO", JogoatConfiguration.GOJO.get());
+        addCTRange(CTs, "OGI", JogoatConfiguration.OGI.get());
+        addCTRange(CTs, "MAKI", JogoatConfiguration.MAKI.get());
+        addCTRange(CTs, "DHRUV", JogoatConfiguration.DHRUV.get());
+        addCTRange(CTs, "MAHORAGA", JogoatConfiguration.MAHORAGA.get());
+        addCTRange(CTs, "TSUKUMO", JogoatConfiguration.TSUKUMO.get());
+        addCTRange(CTs, "YAGA", JogoatConfiguration.YAGA.get());
+        addCTRange(CTs, "KUROURUSHI", JogoatConfiguration.KUROURUSHI.get());
+        addCTRange(CTs, "ISHIGORI", JogoatConfiguration.ISHIGORI.get());
+        addCTRange(CTs, "NISHIMIYA", JogoatConfiguration.NISHIMIYA.get());
+        addCTRange(CTs, "TODO", JogoatConfiguration.TODO.get());
+        addCTRange(CTs, "DAGON", JogoatConfiguration.DAGON.get());
+        addCTRange(CTs, "MIGUEL", JogoatConfiguration.MIGUEL.get());
+        addCTRange(CTs, "OKKOTSU", JogoatConfiguration.OKKOTSU.get());
+        addCTRange(CTs, "MEIMEI", JogoatConfiguration.MEIMEI.get());
+        addCTRange(CTs, "YOROZU", JogoatConfiguration.YOROZU.get());
+        addCTRange(CTs, "URAUME", JogoatConfiguration.URAUME.get());
+        addCTRange(CTs, "GETO", JogoatConfiguration.GETO.get());
+        addCTRange(CTs, "CHOSO", JogoatConfiguration.CHOSO.get());
+        addCTRange(CTs, "TAKAKOURO", JogoatConfiguration.TAKAKOURO.get());
+        addCTRange(CTs, "ITADORI", JogoatConfiguration.ITADORI.get());
+        addCTRange(CTs, "KUSAKABE", JogoatConfiguration.KUSAKABE.get());
+        addCTRange(CTs, "JUNPE", JogoatConfiguration.JUNPE.get());
+        addCTRange(CTs, "JOGO", JogoatConfiguration.JOGO.get());
+        addCTRange(CTs, "TAKABA", JogoatConfiguration.TAKABA.get());
+        addCTRange(CTs, "HIGURUMA", JogoatConfiguration.HIGURUMA.get());
+        addCTRange(CTs, "ANGEL", JogoatConfiguration.ANGEL.get());
+        addCTRange(CTs, "HAKARI", JogoatConfiguration.HAKARI.get());
+        addCTRange(CTs, "MAHITO", JogoatConfiguration.MAHITO.get());
+        addCTRange(CTs, "CHOJURO", JogoatConfiguration.CHOJURO.get());
+        addCTRange(CTs, "NANAMI", JogoatConfiguration.NANAMI.get());
+        addCTRange(CTs, "FUSHIGURO", JogoatConfiguration.FUSHIGURO.get());
+        addCTRange(CTs, "SMALLPOXDEITY", JogoatConfiguration.SMALLPOXDEITY.get());
+        addCTRange(CTs, "INUMAKI", JogoatConfiguration.INUMAKI.get());
+        addCTRange(CTs, "KUGISAKI", JogoatConfiguration.KUGISAKI.get());
+        addCTRange(CTs, "HANAMI", JogoatConfiguration.HANAMI.get());
+        addCTRange(CTs, "KASHIMO", JogoatConfiguration.KASHIMO.get());
+        addCTRange(CTs, "JINICHI", JogoatConfiguration.JINICHI.get());
+        addCTRange(CTs, "NAOYA", JogoatConfiguration.NAOYA.get());
+        return CTs;
     }
 
-    public static String selectRandomCT() {
+    private static String selectRandomCT(List<CTRange> CTs) {
+        if (CTs.isEmpty()) {
+            return null;
+        }
+        double totalSum = CTs.get(CTs.size() - 1).endRange;
         RandomSource random = RandomSource.create();
         double randomValue = random.nextDouble() * totalSum;
         for (CTRange ctRange : CTs) {
@@ -85,15 +87,18 @@ public class TestProcedureeProcedure {
         return null;
     }
 
-    private static void addCTRange(String CT, double value) {
+    private static void addCTRange(List<CTRange> CTs, String CT, double value) {
+        if (!Double.isFinite(value) || value <= 0.0) {
+            return;
+        }
+        double totalSum = CTs.isEmpty() ? 0.0 : CTs.get(CTs.size() - 1).endRange;
         CTs.add(new CTRange(CT, totalSum, totalSum + value));
-        totalSum += value;
+
     }
 
     public static void execute(LevelAccessor world, double x, double y, double z, Player entity, HashMap guistate) {
-        if (entity != null && guistate != null) {
-            calculateCTRanges();
-            String selectedCT = selectRandomCT();
+        if (entity != null && !entity.level().isClientSide() && guistate != null) {
+            String selectedCT = selectRandomCT(calculateCTRanges());
 
             if (selectedCT != null) {
                 switch (selectedCT) {

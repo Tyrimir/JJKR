@@ -58,6 +58,9 @@ public abstract class AIBlueProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        if (entity instanceof net.mcreator.jujutsucraft.entity.BlueEntity) {
+            return;
+        }
         ci.cancel();
 
         if (entity != null) {
@@ -129,7 +132,7 @@ public abstract class AIBlueProcedureMixin {
 
             LivingEntity _entity;
             Player _plr;
-            if (entity.getPersistentData().getBoolean("flag_start")) {
+            if ((entity instanceof net.mcreator.jujutsucraft.entity.BlueEntity blue ? blue.getEntityData().get(net.mcreator.jujutsucraft.entity.BlueEntity.DATA_flag_start) : entity.getPersistentData().getBoolean("flag_start"))) {
                 if (entity.getPersistentData().getBoolean("circle")) {
                     if (entity.getPersistentData().getDouble("NameRanged_ranged") != 0.0 && entity_a instanceof LivingEntity && entity.getPersistentData().getDouble("NameRanged_ranged") == entity_a.getPersistentData().getDouble("NameRanged")) {
                         RotateEntityProcedure.execute(entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getX(), entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getY(), entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getZ(), entity);
@@ -496,4 +499,10 @@ public abstract class AIBlueProcedureMixin {
         }
     }
 
+    @Inject(at = @At("TAIL"), method = "execute", remap = false)
+    private static void customizeUpdatedBlue(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        if (entity instanceof net.mcreator.jujutsucraft.entity.BlueEntity && !world.isClientSide()) {
+            SetCustomizedProcedure.execute(world, x, y, z, entity);
+        }
+    }
 }

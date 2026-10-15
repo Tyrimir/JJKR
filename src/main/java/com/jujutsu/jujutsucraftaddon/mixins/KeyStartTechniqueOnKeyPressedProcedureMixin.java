@@ -78,4 +78,31 @@ public abstract class KeyStartTechniqueOnKeyPressedProcedureMixin {
 
 
     }
+    @Inject(method = "execute", at = @At("HEAD"), remap = false, cancellable = true)
+    private static void cancelDomainWithBarrierCleanup(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        if (!(entity instanceof LivingEntity living) || world.isClientSide()
+                || !living.hasEffect(net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+            return;
+        }
+        var vars = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                .orElse(new JujutsucraftModVariables.PlayerVariables());
+        if (!Component.translatable("jujutsu.technique.cancel_domain").getString().equals(vars.PlayerSelectCurseTechniqueName)) {
+            return;
+        }
+        // Capture the center before effect removal resets any domain state.
+        var data = entity.getPersistentData();
+        if (!data.contains("x_pos_doma") || !data.contains("y_pos_doma") || !data.contains("z_pos_doma")) {
+            return;
+        }
+        var center = new net.minecraft.world.phys.Vec3(data.getDouble("x_pos_doma"),
+                data.getDouble("y_pos_doma"), data.getDouble("z_pos_doma"));
+        living.removeEffect(net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+        for (var barrier : world.getEntitiesOfClass(net.mcreator.jujutsucraft.entity.DomainExpansionEntityEntity.class,
+                net.minecraft.world.phys.AABB.ofSize(center, 4.0, 4.0, 4.0), e -> true)) {
+            barrier.getPersistentData().putBoolean("Break", true);
+            barrier.getPersistentData().putDouble("cnt_break", 0.0);
+            barrier.removeEffect(net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects.NEUTRALIZATION.get());
+        }
+        ci.cancel();
+    }
 }
